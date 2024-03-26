@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoutes = require('./Routes/userRoutes');
+const taskRoutes = require('./Routes/taskRoutes');
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(cors()); // Use CORS middleware
 
 // Routes
 app.use('/users', userRoutes);
+app.use('/tasks', taskRoutes);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
@@ -27,10 +29,5 @@ app.listen(port, () => console.log(`Server running on port ${port}`));
 app.get('/', (req, res) => {
     res.send('Hello from Express!');
 });
-
-app.get('/api/test', (req, res) => {
-    res.status(201).json({ message: 'Hello from MERN Stack.!' });
-});
-
 
 
