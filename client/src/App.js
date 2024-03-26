@@ -6,13 +6,13 @@ function MyComponent() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/test');
+                const response = await fetch('http://localhost:5000/users');
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
                 const jsonData = await response.json();
                 debugger;
-                setData(jsonData.message);
+                setData(jsonData[0].name);
             } catch (error) {
                 console.error('Error:', error.message);
             }
